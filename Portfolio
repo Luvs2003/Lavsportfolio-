@@ -1,0 +1,107 @@
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Github, Linkedin, Mail } from "lucide-react";
+
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white font-sans">
+      {/* Navbar */}
+      <nav className="flex justify-between items-center p-6 sticky top-0 bg-black/60 backdrop-blur-md z-50">
+        <h1 className="text-2xl font-bold text-green-400">LAVANYA T</h1>
+        <div className="space-x-6">
+          <a href="#about" className="hover:text-green-300">About</a>
+          <a href="#projects" className="hover:text-green-300">Projects</a>
+          <a href="#skills" className="hover:text-green-300">Skills</a>
+          <a href="#articles" className="hover:text-green-300">Articles</a>
+          <a href="#contact" className="hover:text-green-300">Contact</a>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center text-center h-[80vh] px-6">
+        <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-5xl font-bold mb-4">
+          Hi, I'm <span className="text-green-400">Lavanya</span>
+        </motion.h1>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 0.8 }} className="text-lg text-gray-300 max-w-xl">
+          Aspiring Business Analyst & Data Enthusiast 📊 | Skilled in Power BI, SEO, Content Creation & Digital Marketing 🚀
+        </motion.p>
+        <div className="mt-6 flex gap-4">
+          <a href="#projects"><Button className="bg-green-500 hover:bg-green-600">View Projects</Button></a>
+          <a href="#contact"><Button variant="outline">Contact Me</Button></a>
+        </div>
+      </section>
+
+      {/* About Me */}
+      <section id="about" className="px-6 py-16 text-center">
+        <h2 className="text-3xl font-bold mb-6">About Me</h2>
+        <p className="text-gray-300 max-w-3xl mx-auto">
+          I'm a BCom (Computer Applications) student passionate about Data, Tech & Marketing. With experience in Power BI, SEO, and creating impactful content, I aim to bridge data and business decisions. ✨
+        </p>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="px-6 py-16 bg-gray-800/50">
+        <h2 className="text-3xl font-bold text-center mb-10">Projects</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { title: "AI Girl Era – Email Marketing Campaign", desc: "3-part campaign empowering Gen Z girls about AI tools.", link: "/projects/email-marketing.pdf" },
+            { title: "SEO Audit Project", desc: "Analyzed & improved website visibility with SEO strategies.", link: "/projects/seo-audit.pdf" },
+            { title: "Power BI Sales Dashboard", desc: "Interactive dashboard for sales analysis & insights.", link: "/projects/powerbi-dashboard.png" },
+          ].map((project, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: i * 0.2 }}>
+              <Card className="bg-gray-900 border-gray-700 hover:shadow-lg hover:shadow-green-400/30">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                  <p className="text-gray-400 mb-4">{project.desc}</p>
+                  <a href={project.link} target="_blank" className="text-green-400 hover:underline">View More →</a>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section id="skills" className="px-6 py-16 text-center">
+        <h2 className="text-3xl font-bold mb-6">Skills</h2>
+        <div className="flex flex-wrap justify-center gap-4">
+          {["Power BI", "SEO", "Content Writing", "Digital Marketing", "MS Excel"].map((skill, i) => (
+            <span key={i} className="bg-green-500/20 border border-green-400 px-4 py-2 rounded-full">{skill}</span>
+          ))}
+        </div>
+      </section>
+
+      {/* Articles */}
+      <section id="articles" className="px-6 py-16 bg-gray-800/50 text-center">
+        <h2 className="text-3xl font-bold mb-6">Articles & Writing</h2>
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <Card className="bg-gray-900 border-gray-700 hover:shadow-lg hover:shadow-green-400/30">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-2">Gender Equality – Hearts in Headlines</h3>
+                <p className="text-gray-400 mb-4">An emotionally powerful article confronting gender inequality with bold storytelling and fearless voice.</p>
+                <a href="https://thelavstalk.blogspot.com" target="_blank" className="text-green-400 hover:underline">Read Article →</a>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="px-6 py-16 text-center">
+        <h2 className="text-3xl font-bold mb-6">Contact Me</h2>
+        <p className="text-gray-300 mb-6">Let's connect for collaborations or opportunities 🚀</p>
+        <div className="flex justify-center gap-6">
+          <a href="https://github.com/Luvs2003" target="_blank"><Github className="w-7 h-7 hover:text-green-400" /></a>
+          <a href="https://www.linkedin.com/in/lavanya-t-2719b2303" target="_blank"><Linkedin className="w-7 h-7 hover:text-green-400" /></a>
+          <a href="mailto:lavanya23042003@gmail.com" target="_blank"><Mail className="w-7 h-7 hover:text-green-400" /></a>
+        </div>
+      </section>
+
+      <footer className="py-6 text-center text-gray-500 text-sm">
+        © {new Date().getFullYear()} Lavanya. All rights reserved.
+      </footer>
+    </div>
+  );
+}
